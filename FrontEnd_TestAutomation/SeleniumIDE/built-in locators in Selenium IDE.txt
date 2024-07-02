@@ -1,0 +1,10 @@
+ID: id=yourId
+Name: name=yourName
+XPath: xpath=yourXPath
+CSS Selector: css=yourCssSelector
+Link Text: link=Your Link Text
+Partial Link Text: partial link=Partial Text
+Tag Name: tag=tagName
+Class Name: class=yourClassName
+DOM: dom=yourDomExpression
+XPath (Generated): xpath=generatedXPath
