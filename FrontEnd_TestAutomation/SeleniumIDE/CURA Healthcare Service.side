@@ -1,0 +1,281 @@
+{
+  "id": "d0835e04-c219-46b2-b180-921788874c91",
+  "version": "2.0",
+  "name": "CURA Healthcare Service",
+  "url": "https://katalon-demo-cura.herokuapp.com/",
+  "tests": [{
+    "id": "038a6d6d-afbb-4ef8-a8bf-6c934eb565cd",
+    "name": "2.1_Verify the text and elements in the footer of the page.",
+    "commands": [{
+      "id": "3fed6572-40f0-4547-bb3c-717e6153614d",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "20fa53a3-9f4d-4d2b-9a51-cedb531b0975",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.col-lg-10 > h4:nth-child(1) > strong:nth-child(1)",
+      "targets": [],
+      "value": "CURA Healthcare Service"
+    }, {
+      "id": "e9c9d874-ccd8-4f08-a2d1-09d5f4ffefc7",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.col-lg-10 > p:nth-child(2)",
+      "targets": [],
+      "value": "Atlanta 550 Pharr Road NE Suite 525\\nAtlanta, GA 30305"
+    }, {
+      "id": "ca9d69b7-c3c5-4fd7-8bc6-8bd6c12d82b8",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.list-unstyled > li:nth-child(1)",
+      "targets": [],
+      "value": " (678) 813-1KMS"
+    }, {
+      "id": "20023162-326e-4b91-a20c-c1f36fa62936",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.list-unstyled > li:nth-child(2) > a:nth-child(2)",
+      "targets": [],
+      "value": "info@katalon.com"
+    }, {
+      "id": "bf1528f0-994e-4d96-943c-8b5a6cdf1b3b",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.fa-facebook",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be335db9-9b21-4421-a4aa-94c7b565812d",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.fa-twitter",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a0e1c554-551b-48c7-acaa-7a3960741d5a",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=.fa-dribbble",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8b9ed69f-2791-485a-b41a-35353925df3d",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "0a81aa83-35ca-485d-8a30-f072bd981bdf",
+    "name": "2.2_Successfully log in and log out of the website.",
+    "commands": [{
+      "id": "8c68dfef-f35b-487b-ad12-873c2b87cd05",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "97bd5b8d-0071-4061-933d-9c1e3b0aae36",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fa-bars",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e1c7b581-f9a7-4721-8e2a-ea808ae446ce",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sidebar-nav > li:nth-child(4) > a:nth-child(1)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "80d49407-adbe-4f70-8d4c-31f36819a3e6",
+      "comment": "",
+      "command": "click",
+      "target": "css=#txt-username",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "43af2037-c114-413e-b48b-5d226a2e1be1",
+      "comment": "",
+      "command": "type",
+      "target": "css=#txt-username",
+      "targets": [],
+      "value": "John Doe"
+    }, {
+      "id": "802cac09-7e7e-42eb-a777-56c8814d6fac",
+      "comment": "",
+      "command": "click",
+      "target": "css=#txt-password",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e7896727-2139-44cb-99bf-03e3dc655998",
+      "comment": "",
+      "command": "type",
+      "target": "css=#txt-password",
+      "targets": [],
+      "value": "ThisIsNotAPassword"
+    }, {
+      "id": "08243754-cbb5-4231-a732-4ac6a97fdea8",
+      "comment": "",
+      "command": "click",
+      "target": "css=#btn-login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "283a1e43-0b9c-4299-a32f-87e768adf0c9",
+      "comment": "",
+      "command": "click",
+      "target": "css=#btn-make-appointment",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "12f02745-3175-46cb-b228-5e9469e75322",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.col-sm-12 > h2:nth-child(1)",
+      "targets": [],
+      "value": "Make Appointment"
+    }, {
+      "id": "8bbd868f-453f-40c8-a24d-37403e9b44c6",
+      "comment": "",
+      "command": "click",
+      "target": "css=#menu-toggle > i",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "616beefc-7b10-43b2-8c40-97f62c76fa01",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=#sidebar-wrapper > ul > li:nth-child(6) > a",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b8753d58-22e8-4fc4-bb7a-f043e4a49632",
+      "comment": "",
+      "command": "click",
+      "target": "css=#sidebar-wrapper > ul > li:nth-child(6) > a",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ce8dafcc-c0ff-4498-b93d-588d8264b30f",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "c00b63f6-884a-424e-acd4-07cefce34f85",
+    "name": "2.3_Make an appointment",
+    "commands": [{
+      "id": "6263543d-0677-47ce-9132-ea66788fe335",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4acc8399-b7ff-458f-8d35-6007433d58ce",
+      "comment": "",
+      "command": "click",
+      "target": "css=#btn-make-appointment",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "436e0231-e205-480d-adde-951a9b9b9fb0",
+      "comment": "",
+      "command": "click",
+      "target": "id=txt-username",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0bbb699c-acc5-44cf-aac6-1977ea90ffa6",
+      "comment": "",
+      "command": "type",
+      "target": "id=txt-username",
+      "targets": [],
+      "value": "John Doe"
+    }, {
+      "id": "6b8d3bcf-0120-42b5-941e-4fcbb621b1bb",
+      "comment": "",
+      "command": "click",
+      "target": "id=txt-password",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f73a15d-4f78-46a1-bc27-5e7ad825c18b",
+      "comment": "",
+      "command": "type",
+      "target": "id=txt-password",
+      "targets": [],
+      "value": "ThisIsNotAPassword"
+    }, {
+      "id": "a29d89ca-5e52-426c-b46a-52530220e67c",
+      "comment": "",
+      "command": "click",
+      "target": "id=btn-login",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f75a2d92-e13a-40f6-8f56-b0ea3d8d800c",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=#appointment > div > div > div > h2",
+      "targets": [],
+      "value": "Make Appointment"
+    }, {
+      "id": "600fc992-ec7a-457a-8ad8-c901659d14c8",
+      "comment": "",
+      "command": "click",
+      "target": "css=#combo_facility",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "86eaac2f-7d73-42f9-9103-3965064e0aad",
+      "comment": "",
+      "command": "select",
+      "target": "css=#combo_facility",
+      "targets": [],
+      "value": "value=Hongkong CURA Healthcare Center"
+    }, {
+      "id": "76dbea8b-df45-4f34-a0b5-25e08d6731ae",
+      "comment": "",
+      "command": "click",
+      "target": "css=#appointment > div > div > form > div:nth-child(3) > label",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e5ec27bb-c3e6-4016-a360-cc8c192ca729",
+      "comment": "",
+      "command": "click",
+      "target": "css=#appointment > div > div > form > div:nth-child(3) > div > label:nth-child(3)",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "0cc3ce7a-9f75-4545-ad00-b110c40e05d2",
+    "name": "Verify the Footer",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["038a6d6d-afbb-4ef8-a8bf-6c934eb565cd"]
+  }, {
+    "id": "9fad7d3e-c784-4124-ac80-f4325944e25f",
+    "name": "Login and Logout",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["0a81aa83-35ca-485d-8a30-f072bd981bdf"]
+  }],
+  "urls": ["https://katalon-demo-cura.herokuapp.com/"],
+  "plugins": []
+}
