@@ -13,6 +13,152 @@
       "target": "",
       "targets": [],
       "value": ""
+    }, {
+      "id": "168a5da8-4aba-4603-abd2-f502822bd1ea",
+      "comment": "",
+      "command": "click",
+      "target": "css=#user-name",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "02c9b97e-a125-44bd-85e2-eb0713200f34",
+      "comment": "",
+      "command": "type",
+      "target": "css=#user-name",
+      "targets": [],
+      "value": "user123"
+    }, {
+      "id": "f9a7771b-980d-4b24-87ab-6ab34819cc6a",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "955916c3-dcbe-4cf9-b177-303cee07624b",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [],
+      "value": "h8h8s1s1"
+    }, {
+      "id": "46911165-e8ae-4a41-b9dd-80708d4e45ff",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2f8e6d56-ece9-4e4f-b7de-58c9954b22f6",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=*[data-test=\"error\"]",
+      "targets": [
+        ["css=*[data-test=\"error\"]", "css:data-attr"],
+        ["css=h3", "css:finder"],
+        ["xpath=//div[@id='login_button_container']/div/form/div[3]/h3", "xpath:idRelative"],
+        ["xpath=//h3", "xpath:position"],
+        ["xpath=//h3[contains(.,'Epic sadface: Username and password do not match any user in this service')]", "xpath:innerText"]
+      ],
+      "value": "Epic sadface: Username and password do not match any user in this service"
+    }, {
+      "id": "24694be3-2ad7-41ac-9dff-f66c104a54de",
+      "comment": "",
+      "command": "storeText",
+      "target": "css=*[data-test=\"error\"]",
+      "targets": [],
+      "value": "storedText"
+    }, {
+      "id": "adac42da-15b3-493e-9be7-3d98995cd994",
+      "comment": "",
+      "command": "if",
+      "target": "${storedText}",
+      "targets": [],
+      "value": "Epic sadface: Username and password do not match any user in this service"
+    }, {
+      "id": "5eb1f2b2-38dc-4f0f-b61d-cdcd1dcc7239",
+      "comment": "",
+      "command": "echo",
+      "target": "",
+      "targets": [],
+      "value": "Error => Invalid credentials"
+    }, {
+      "id": "e689fe96-7d8d-46a9-81b3-9b742bda9a66",
+      "comment": "",
+      "command": "click",
+      "target": "id=user-name",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d6ca743f-a94b-44b2-afdb-4e853e332364",
+      "comment": "",
+      "command": "type",
+      "target": "id=user-name",
+      "targets": [],
+      "value": "visual_user"
+    }, {
+      "id": "cfb11cba-a8fe-4aef-b5ca-aef00f22e1a1",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "543beed3-1d96-4797-87d4-12222fd34ff3",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [],
+      "value": "secret_sauce"
+    }, {
+      "id": "b1d105e7-cce1-4af2-996f-e7e5c8c7afe4",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-button",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ab6705b9-0b0b-4483-93f2-077c838b2579",
+      "comment": "",
+      "command": "else",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "65b66fb2-c117-46b9-bff2-2e8cd4404da6",
+      "comment": "",
+      "command": "echo",
+      "target": "",
+      "targets": [],
+      "value": "Successful Login"
+    }, {
+      "id": "af5b0677-e125-40a9-b3d2-ff898b651c91",
+      "comment": "",
+      "command": "end",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e7212418-271f-4fe1-943b-a9847152c433",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=#header_container > div.header_secondary_container > span",
+      "targets": [],
+      "value": "Products"
+    }, {
+      "id": "bfb5f449-7110-4419-89fe-b7a9b8afca95",
+      "comment": "",
+      "command": "echo",
+      "target": "",
+      "targets": [],
+      "value": "Successful login"
+    }, {
+      "id": "e6842dbd-fc96-4ea5-b7ad-b1fac9c1f992",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
     }]
   }],
   "suites": [{
@@ -23,6 +169,6 @@
     "timeout": 300,
     "tests": ["43aa00a1-ba74-427c-b690-2681f7826c06"]
   }],
-  "urls": [],
+  "urls": ["https://www.saucedemo.com/"],
   "plugins": []
 }
