@@ -160,6 +160,77 @@
       "targets": [],
       "value": ""
     }]
+  }, {
+    "id": "a6e624ad-348c-4a3b-947c-e36fbd16c537",
+    "name": "2.1_Add item to the shopping cart",
+    "commands": [{
+      "id": "76de55fb-03a2-4942-a140-24346c200bba",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed8dc108-2005-492b-8038-30c9aa04fa2c",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.saucedemo.com/inventory.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fa149428-fe76-40ea-8387-85967494ffb2",
+      "comment": "",
+      "command": "click",
+      "target": "css=#add-to-cart-sauce-labs-backpack",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "be31b4af-326a-448e-ad97-6cadc38a10fb",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.shopping_cart_badge",
+      "targets": [],
+      "value": "1"
+    }, {
+      "id": "7c249680-21ae-404a-b6ce-bcef44efb71e",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "bc4eb53b-a39f-4bc1-97ab-a32affcc7a23",
+    "name": "2.2_Removing item from the shopping cart",
+    "commands": [{
+      "id": "9f98b03b-e30f-4a34-ab9e-dcea724edd59",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c96de917-7e64-424a-8c82-7efd680c93b3",
+      "comment": "",
+      "command": "open",
+      "target": "https://www.saucedemo.com/cart.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "03ba9f52-9a5f-4a2f-9b49-81b136208d7b",
+      "comment": "",
+      "command": "click",
+      "target": "css=#remove-sauce-labs-backpack",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "45c8d0e1-7aef-4221-8c53-8fc77f802596",
+      "comment": "",
+      "command": "assertElementNotPresent",
+      "target": "css=.shopping_cart_badge",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "8f242521-b353-403e-aa07-1a40e31b0d4c",
@@ -168,6 +239,13 @@
     "parallel": false,
     "timeout": 300,
     "tests": ["43aa00a1-ba74-427c-b690-2681f7826c06"]
+  }, {
+    "id": "639183d9-0cbb-4176-9e84-0c9ae67ce755",
+    "name": "2. Shopping Card",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["a6e624ad-348c-4a3b-947c-e36fbd16c537"]
   }],
   "urls": ["https://www.saucedemo.com/"],
   "plugins": []
