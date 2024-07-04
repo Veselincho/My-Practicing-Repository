@@ -1,0 +1,28 @@
+{
+  "id": "8dcad3c7-829f-4a10-a95e-aa76dc750430",
+  "version": "2.0",
+  "name": "Saucedemo",
+  "url": "https://www.saucedemo.com/",
+  "tests": [{
+    "id": "43aa00a1-ba74-427c-b690-2681f7826c06",
+    "name": "1.1_Login with Invalid User and Retry",
+    "commands": [{
+      "id": "f89194a5-9894-458b-bea8-420aa9765961",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "8f242521-b353-403e-aa07-1a40e31b0d4c",
+    "name": "1.Invalid Login",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["43aa00a1-ba74-427c-b690-2681f7826c06"]
+  }],
+  "urls": [],
+  "plugins": []
+}
