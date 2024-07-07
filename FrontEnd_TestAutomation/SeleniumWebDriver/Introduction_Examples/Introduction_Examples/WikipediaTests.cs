@@ -10,7 +10,7 @@ namespace Introduction_Examples
         [Test]
         public void firstStepsInWebDriver()
         {
-            string url = "htts://wikipedia.org";
+            string url = "https://wikipedia.org";
 
             //Create new driver (browser) to use
             var driver = new ChromeDriver();
@@ -20,7 +20,10 @@ namespace Introduction_Examples
             var searchBox = driver.FindElement(By.Id("searchInput"));
             searchBox.Click();
             searchBox.SendKeys("John Travolta" + Keys.Enter);
-           
+            var pageTitle = driver.Title;
+            // I can see the print result in the TestExplorer/StandartOutput:
+            Console.WriteLine(pageTitle);
+            Assert.That(pageTitle,Is.EqualTo("John Travolta - Wikipedia"));
         }
     }
 }
