@@ -4,7 +4,7 @@ using OpenQA.Selenium.Chrome;
 
 namespace Introduction_Examples
 {
-    public class Tests
+    public class Wikipedia
     {
 
         [Test]
