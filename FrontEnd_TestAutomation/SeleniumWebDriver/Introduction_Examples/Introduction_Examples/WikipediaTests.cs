@@ -1,15 +1,18 @@
 global using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.DevTools.V124.Network;
 
 namespace Introduction_Examples
 {
     public class Wikipedia
     {
+        private string path = "C:\\Users\\VesoPC\\Desktop\\My-Practicing-Repository\\FrontEnd_TestAutomation\\SeleniumWebDriver\\simpleForm";
 
         [Test]
         public void firstStepsInWebDriver()
         {
+            
             string url = "https://wikipedia.org";
 
             //Create new driver (browser) to use
