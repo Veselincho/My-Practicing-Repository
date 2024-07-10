@@ -7,8 +7,6 @@ namespace Introduction_Examples
 {
     public class Wikipedia
     {
-        private string path = "C:\\Users\\VesoPC\\Desktop\\My-Practicing-Repository\\FrontEnd_TestAutomation\\SeleniumWebDriver\\simpleForm";
-
         [Test]
         public void firstStepsInWebDriver()
         {
