@@ -24,10 +24,11 @@ namespace Introduction_Examples
             driver.Quit();
         }
 
-        [Test]
-        public void ExampleTest()
+        [Test, Order(1)] //Ordering
+        public void xPaths()
         {
-
+            IWebElement element = driver.FindElement(By.XPath("//body//h2"));
+            Assert.That(element.Text, Is.EqualTo("Contact Form"));
         }
 
         
