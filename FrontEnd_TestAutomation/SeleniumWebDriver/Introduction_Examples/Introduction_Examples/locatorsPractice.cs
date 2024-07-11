@@ -29,6 +29,9 @@ namespace Introduction_Examples
         {
             IWebElement element = driver.FindElement(By.XPath("//body//h2"));
             Assert.That(element.Text, Is.EqualTo("Contact Form"));
+
+            IWebElement submitButton = driver.FindElement(By.XPath("//html//body//form//input[@class='button' and @type='submit']"));
+            Assert.That(submitButton.Displayed, Is.True);   
         }
 
         
