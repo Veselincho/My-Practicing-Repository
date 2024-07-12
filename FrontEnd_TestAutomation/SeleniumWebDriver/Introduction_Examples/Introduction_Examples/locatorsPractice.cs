@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Collections.ObjectModel;
 
 namespace Introduction_Examples
 {
@@ -31,7 +32,16 @@ namespace Introduction_Examples
             Assert.That(element.Text, Is.EqualTo("Contact Form"));
 
             IWebElement submitButton = driver.FindElement(By.XPath("//html//body//form//input[@class='button' and @type='submit']"));
-            Assert.That(submitButton.Displayed, Is.True);   
+            Assert.That(submitButton.Displayed, Is.True);
+
+            ReadOnlyCollection<IWebElement> genderElements = driver.FindElements(By.XPath("//body//form[@action]//input[@type='radio']"));
+
+            Assert.That(genderElements.Count, Is.EqualTo(2));
+                
+            Console.WriteLine(genderElements.GetType());
+
+            IWebElement h3Content = driver.FindElement(By.XPath("//body//form//h3"));
+            Assert.That(h3Content.Text, Is.EqualTo("Additional Information"));
         }
 
         
