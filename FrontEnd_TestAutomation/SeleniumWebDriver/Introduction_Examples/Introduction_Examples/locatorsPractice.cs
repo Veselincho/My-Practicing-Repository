@@ -52,7 +52,7 @@ namespace Introduction_Examples
             IWebElement phoneNumber = driver.FindElement(By.XPath("//html//form//div[@class='additional-info']"));
             Assert.That(phoneNumber.Displayed, Is.True);   // chgecks for visibility
             Assert.That(phoneNumber.Text, Is.EqualTo("Phone Number:"));
-
+            
         }
 
 
