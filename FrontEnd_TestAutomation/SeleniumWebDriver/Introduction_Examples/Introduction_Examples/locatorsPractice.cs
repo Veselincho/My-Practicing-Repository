@@ -42,9 +42,20 @@ namespace Introduction_Examples
 
             IWebElement h3Content = driver.FindElement(By.XPath("//body//form//h3"));
             Assert.That(h3Content.Text, Is.EqualTo("Additional Information"));
+
+            IWebElement firstNameElement = driver.FindElement(By.XPath("//label[@for='fname']"));
+            IWebElement lastNameElement = driver.FindElement(By.XPath("//label[@for='lname']"));
+
+            Assert.That(firstNameElement.Text, Is.EqualTo("First name:"));
+            Assert.That(lastNameElement.Text, Is.EqualTo("Last name:"));
+         
+            IWebElement phoneNumber = driver.FindElement(By.XPath("//html//form//div[@class='additional-info']"));
+            Assert.That(phoneNumber.Displayed, Is.True);   // chgecks for visibility
+            Assert.That(phoneNumber.Text, Is.EqualTo("Phone Number:"));
+
         }
 
-        
+
 
     }
 }
