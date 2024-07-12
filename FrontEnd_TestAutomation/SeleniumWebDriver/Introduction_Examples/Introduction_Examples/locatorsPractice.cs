@@ -52,10 +52,15 @@ namespace Introduction_Examples
             IWebElement phoneNumber = driver.FindElement(By.XPath("//html//form//div[@class='additional-info']"));
             Assert.That(phoneNumber.Displayed, Is.True);   // chgecks for visibility
             Assert.That(phoneNumber.Text, Is.EqualTo("Phone Number:"));
-            
+
+            IWebElement textElement = driver.FindElement(By.LinkText("Softuni Official Page"));
+            Assert.That(textElement.Displayed, Is.True);
+            Assert.That(textElement.Text, Is.EqualTo("Softuni Official Page"));
+
+            var textElement2 = driver.FindElement(By.PartialLinkText("fficial Pa"));
+            Assert.That(textElement2.Displayed, Is.True);
+            Assert.That(textElement2.Text, Is.EqualTo("Softuni Official Page"));
+            Console.WriteLine(textElement2);
         }
-
-
-
     }
 }
