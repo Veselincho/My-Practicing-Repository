@@ -140,6 +140,7 @@ namespace Exercise_Selenium_WebDriver
             }
 
             Assert.IsTrue(File.Exists(path));
+            Assert.That(new FileInfo(path).Length, Is.GreaterThan(0));
         }
 
     }
