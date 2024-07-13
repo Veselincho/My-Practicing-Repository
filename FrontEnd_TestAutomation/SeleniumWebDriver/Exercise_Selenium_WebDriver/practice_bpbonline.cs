@@ -49,7 +49,7 @@ namespace Exercise_Selenium_WebDriver
 
 
         [Test, Order(1)]
-        public void HandlingFormInput()
+        public void UserRegister()
         {
             driver.Navigate().GoToUrl(url);
             driver.FindElement(By.XPath("//span[a][3]//a")).Click();
@@ -83,10 +83,6 @@ namespace Exercise_Selenium_WebDriver
             driver.FindElement(By.CssSelector("#bodyContent > form > div > div:nth-child(10) > table > tbody > tr:nth-child(2) > td.fieldValue > input[type=password]")).SendKeys("obama23");
 
             driver.FindElement(By.Id("tdb4")).Click();
-
-            Thread.Sleep(8000);
-            Console.WriteLine(GenerateRandomDate());
-
         }
     }
 }
