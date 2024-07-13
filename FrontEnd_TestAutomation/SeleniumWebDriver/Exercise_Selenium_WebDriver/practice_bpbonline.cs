@@ -105,7 +105,41 @@ namespace Exercise_Selenium_WebDriver
             driver.FindElement(By.CssSelector("#bodyContent > div:nth-child(3) > div > form > table > tbody > tr:nth-child(2) > td.fieldValue > input[type=password]")).SendKeys(passwordCredential + Keys.Enter);
             var h1 = driver.FindElement(By.CssSelector("h1"));
             Assert.That(h1.Text, Is.EqualTo("My Account Information"));
+            Assert.That(driver.PageSource.Contains("My Account Information"));
+        }
 
+        [Test, Order(3)]    
+        public void WorkingWithWebTables()
+        {
+            driver.Navigate().GoToUrl(url); 
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+
+            // locate the table
+            IWebElement productsTable = driver.FindElement(By.XPath("//div[@class='contentText']//table"));
+
+            ReadOnlyCollection<IWebElement> tableRows = productsTable.FindElements(By.XPath("//tbody//tr"));
+
+            string path = System.IO.Directory.GetCurrentDirectory() + "/productsInfo.txt";
+
+            if (File.Exists(path))
+            {
+                File.Delete(path);  
+            }
+
+            foreach (IWebElement row in tableRows)   
+            {
+                ReadOnlyCollection<IWebElement> tableData = row.FindElements(By.XPath(".//td"));
+
+                foreach (var tData in tableData)
+                {
+                    string data = tData.Text;
+                    string[] productInfo = data.Split("\n");
+
+                    File.AppendAllText(path, productInfo[0].Trim() + ", " + productInfo[1].Trim() + "\n");
+                }
+            }
+
+            Assert.IsTrue(File.Exists(path));
         }
 
     }
