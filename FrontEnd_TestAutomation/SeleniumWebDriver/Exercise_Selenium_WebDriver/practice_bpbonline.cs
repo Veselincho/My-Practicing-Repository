@@ -89,6 +89,7 @@ namespace Exercise_Selenium_WebDriver
 
             var h1 = driver.FindElement(By.CssSelector("h1"));
             Assert.That(h1.Text, Is.EqualTo("Your Account Has Been Created!"));
+            Assert.That(driver.PageSource.Contains("Your Account Has Been Created!"));
 
             emailCredential = emailValue;
             passwordCredential = "obama23";
