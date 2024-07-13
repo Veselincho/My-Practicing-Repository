@@ -12,6 +12,8 @@ namespace Exercise_Selenium_WebDriver
     {
         private IWebDriver driver;
         string url = "https://practice.bpbonline.com/";
+        string? emailCredential;
+        string? passwordCredential;
 
         [SetUp]
         public void Setup()
@@ -70,7 +72,8 @@ namespace Exercise_Selenium_WebDriver
             dateOfBirth.SendKeys(GenerateRandomDate());
 
             var email = driver.FindElement(By.XPath("//td[@class='fieldValue']//input[@type='text' and @name='email_address']"));
-            email.SendKeys($"bara4eto{RandomNuber()}@yahoo.com");
+            var emailValue = $"bara4eto{RandomNuber()}@yahoo.com";
+            email.SendKeys(emailValue);
 
             driver.FindElement(By.CssSelector("#bodyContent > form > div > div:nth-child(6) > table > tbody > tr:nth-child(1) > td.fieldValue > input[type=text]")).SendKeys("street adress value should be here");
             driver.FindElement(By.CssSelector("#bodyContent > form > div > div:nth-child(6) > table > tbody > tr:nth-child(3) > td.fieldValue > input[type=text]")).SendKeys("2300");
@@ -83,6 +86,26 @@ namespace Exercise_Selenium_WebDriver
             driver.FindElement(By.CssSelector("#bodyContent > form > div > div:nth-child(10) > table > tbody > tr:nth-child(2) > td.fieldValue > input[type=password]")).SendKeys("obama23");
 
             driver.FindElement(By.Id("tdb4")).Click();
+
+            var h1 = driver.FindElement(By.CssSelector("h1"));
+            Assert.That(h1.Text, Is.EqualTo("Your Account Has Been Created!"));
+
+            emailCredential = emailValue;
+            passwordCredential = "obama23";
         }
+
+        [Test, Order(2)]
+        public void UserLogin()
+        {
+            driver.Navigate().GoToUrl(url);
+            driver.FindElement(By.CssSelector("#tdb3 > span.ui-button-text")).Click();
+            Console.WriteLine(emailCredential);
+            driver.FindElement(By.CssSelector("#bodyContent > div:nth-child(3) > div > form > table > tbody > tr:nth-child(1) > td.fieldValue > input[type=text]")).SendKeys($"{emailCredential}");
+            driver.FindElement(By.CssSelector("#bodyContent > div:nth-child(3) > div > form > table > tbody > tr:nth-child(2) > td.fieldValue > input[type=password]")).SendKeys(passwordCredential + Keys.Enter);
+            var h1 = driver.FindElement(By.CssSelector("h1"));
+            Assert.That(h1.Text, Is.EqualTo("My Account Information"));
+
+        }
+
     }
 }
