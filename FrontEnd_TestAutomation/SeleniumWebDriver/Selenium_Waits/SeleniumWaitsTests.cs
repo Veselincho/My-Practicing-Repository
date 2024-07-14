@@ -13,15 +13,18 @@ namespace Selenium_Waits
         [SetUp] // beforeEach()
         public void Setup()
         {
-            driver = new ChromeDriver();
             var options = new ChromeOptions();
+            options.AddArgument("--headless");
+            driver = new ChromeDriver(options);
         }
 
         [Test]
-        public void Test1()
+        public void AddBoxWhitoutWaitsFails()
         {
             driver.Navigate().GoToUrl(url);
-            Assert.Pass();
+            driver.FindElement(By.Id("#adder")).Click();
+            var box = driver.FindElement(By.CssSelector("#box0"));
+            Assert.That(box.Displayed, Is.True);
         }
 
         [TearDown] // afterEach()
