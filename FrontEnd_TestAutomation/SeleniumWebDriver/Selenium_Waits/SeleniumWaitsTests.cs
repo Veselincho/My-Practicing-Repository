@@ -18,6 +18,13 @@ namespace Selenium_Waits
             driver = new ChromeDriver(options);
         }
 
+        [TearDown] // afterEach()
+        public void Teardown()
+        {
+            driver.Quit();
+            driver.Dispose();
+        }
+
         [Test]
         public void AddBoxWhitoutWaitsFails()
         {
@@ -27,11 +34,8 @@ namespace Selenium_Waits
             Assert.That(box.Displayed, Is.True);
         }
 
-        [TearDown] // afterEach()
-        public void Teardown()
-        {
-            driver.Quit();
-            driver.Dispose();
-        }
+
+
+       
     }
 }
