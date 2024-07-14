@@ -26,7 +26,7 @@ namespace Selenium_Waits
             driver.Dispose();
         }
 
-        [Test]
+        [Test,Order(1)]
         public void AddBoxWhitoutWaitsFails()
         {
             driver.FindElement(By.Id("#adder")).Click();
@@ -34,7 +34,7 @@ namespace Selenium_Waits
             Assert.That(box.Displayed, Is.True);
         }
 
-        [Test]
+        [Test,Order(2)]
         public void RevealInputWhitoutWaitsFails()
         {
             driver.FindElement(By.Id("reveal")).Click();
