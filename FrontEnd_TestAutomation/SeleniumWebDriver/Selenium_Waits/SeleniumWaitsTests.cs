@@ -16,6 +16,7 @@ namespace Selenium_Waits
             var options = new ChromeOptions();
             options.AddArgument("--headless");
             driver = new ChromeDriver(options);
+            driver.Navigate().GoToUrl(url);
         }
 
         [TearDown] // afterEach()
@@ -28,14 +29,18 @@ namespace Selenium_Waits
         [Test]
         public void AddBoxWhitoutWaitsFails()
         {
-            driver.Navigate().GoToUrl(url);
             driver.FindElement(By.Id("#adder")).Click();
             var box = driver.FindElement(By.CssSelector("#box0"));
             Assert.That(box.Displayed, Is.True);
         }
 
-
-
-       
+        [Test]
+        public void RevealInputWhitoutWaitsFails()
+        {
+            driver.FindElement(By.Id("reveal")).Click();
+            IWebElement revealed = driver.FindElement(By.Id("reveal"));
+            revealed.SendKeys("Displayed");
+            Assert.That(revealed.GetAttribute("value"), Is.EqualTo("Displayed"));
+        }
     }
 }
