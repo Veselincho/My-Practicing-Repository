@@ -31,7 +31,7 @@ namespace Selenium_Waits_Exercise
         }
 
         [Test, Order(1)]
-        public void SearchProductWithImplicitWait()
+        public void SearchProduct_Keyboard_ShouldAddToCard()
         {
             // Use implicit wait
             driver.FindElement(By.XPath("//form[@name='quick_find']//input[@type='text']")).SendKeys("keyboard" + Keys.Enter);
@@ -50,5 +50,7 @@ namespace Selenium_Waits_Exercise
             // kinda same
             Assert.True(driver.PageSource.Contains("What's In My Cart?"));
         }
+
+   
     }
 }
