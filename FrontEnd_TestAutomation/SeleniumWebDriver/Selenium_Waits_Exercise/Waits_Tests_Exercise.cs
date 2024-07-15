@@ -47,6 +47,8 @@ namespace Selenium_Waits_Exercise
 
             // Assert that the cart page is displayed
             Assert.That(driver.PageSource.Contains("What's In My Cart?"));
+            // kinda same
+            Assert.True(driver.PageSource.Contains("What's In My Cart?"));
         }
     }
 }
