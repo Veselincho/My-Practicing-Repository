@@ -1,9 +1,9 @@
-global using NUnit.Framework;
-using OpenQA.Selenium; // the general web driver
-using OpenQA.Selenium.Chrome; // for chrome driver 
-using OpenQA.Selenium.Support; // for waits
-namespace Selenium_Waits_Exercise
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
+namespace Selenium_Waits_Exercise
 {
     [TestFixture]
     public class Waits_Tests_Exercise
@@ -11,26 +11,42 @@ namespace Selenium_Waits_Exercise
         private string url = "https://practice.bpbonline.com/";
         private IWebDriver driver;
 
-        [SetUp] //beforeEach()
+        [SetUp] // beforeEach()
         public void Setup()
         {
             var options = new ChromeOptions();
-          //  options.AddArgument("--headless");
-            IWebDriver driver = new ChromeDriver(options);
-            driver.Navigate().GoToUrl(url); 
+            // options.AddArgument("--headless"); //
+            driver = new ChromeDriver(options); // Assign to the class-level driver
+            // Setting implicit wait
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            // Navigate to the URL
+            driver.Navigate().GoToUrl(url);
         }
 
         [TearDown] // afterEach()
-        public void Teardown() 
+        public void Teardown()
         {
-            driver.Close();
-            driver.Dispose(); 
-        }      
+            driver.Quit(); // 
+            driver.Dispose();   
+        }
 
-        [Test,Order(1)]
+        [Test, Order(1)]
         public void SearchProductWithImplicitWait()
         {
+            // Use implicit wait
+            driver.FindElement(By.XPath("//form[@name='quick_find']//input[@type='text']")).SendKeys("keyboard" + Keys.Enter);
 
+            try
+            {
+                driver.FindElement(By.XPath("//a[@id='tdb4']")).Click();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Unexpected exception: " + ex.Message);
+            }
+
+            // Assert that the cart page is displayed
+            Assert.That(driver.PageSource.Contains("What's In My Cart?"));
         }
     }
 }
