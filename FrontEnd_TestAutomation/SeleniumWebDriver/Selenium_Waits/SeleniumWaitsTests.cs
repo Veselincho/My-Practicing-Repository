@@ -29,7 +29,7 @@ namespace Selenium_Waits
         [Test,Order(1)]
         public void AddBoxWhitoutWaitsFails()
         {
-            driver.FindElement(By.Id("#adder")).Click();
+            driver.FindElement(By.Id("adder")).Click();
             var box = driver.FindElement(By.CssSelector("#box0"));
             Assert.That(box.Displayed, Is.True);
         }
@@ -42,5 +42,28 @@ namespace Selenium_Waits
             revealed.SendKeys("Displayed");
             Assert.That(revealed.GetAttribute("value"), Is.EqualTo("Displayed"));
         }
+
+        [Test, Order(3)]
+        public void AddBoxWithThreatSleep()
+        {
+            driver.FindElement(By.Id("adder")).Click();
+            Thread.Sleep(5000); // NB!!! Thread.Sleep can make tests pass by introducing fixed delays, it is inefficient and can make tests slow and unreliable
+            var box = driver.FindElement(By.CssSelector("#box0"));
+            Assert.That(box.Displayed, Is.True);
+        }
+
+        [Test,Order(4)] 
+        public void AddBoxWithImplicitWait()
+        {
+            driver.FindElement(By.Id("adder")).Click();
+            //setup an  implicit wait
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+
+            //attempt to find the newly added box element 
+            IWebElement newBox = driver.FindElement(By.Id("box0"));
+
+            Assert.That(newBox.Displayed, Is.True);
+        }
+
     }
 }
