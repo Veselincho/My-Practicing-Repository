@@ -8,8 +8,11 @@ namespace StudentsRegistryPOM.PagesTests
    //WebDriver are automatically applied to all your tests without having to duplicate the setup and teardown code in each test class
     public class BaseTests 
     {
+
         protected IWebDriver driver;
 
+        //declare OneTimeSetUp and OneTimeTearDown in the base class, NUnit automatically executes
+        //them for every derived test class without needing any explicit calls in those classes.
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
@@ -22,7 +25,7 @@ namespace StudentsRegistryPOM.PagesTests
             driver.Quit();
             driver.Dispose();
         }
+
+        // baseTests class does not need any [Test] attributes,it serves solely as a foundational setup for other test classes ^^ 
     }
-
-
 }
