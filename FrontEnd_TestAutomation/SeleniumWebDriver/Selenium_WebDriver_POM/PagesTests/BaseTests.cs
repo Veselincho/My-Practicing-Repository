@@ -4,7 +4,9 @@ using StudentsRegistryPOM.Pages;
 
 namespace StudentsRegistryPOM.PagesTests
 {
-    public class BaseTests
+   //basetests.cs is designed to be inherited by all other test classes. By doing so, you ensure that the setup and teardown methods for the
+   //WebDriver are automatically applied to all your tests without having to duplicate the setup and teardown code in each test class
+    public class BaseTests 
     {
         protected IWebDriver driver;
 
