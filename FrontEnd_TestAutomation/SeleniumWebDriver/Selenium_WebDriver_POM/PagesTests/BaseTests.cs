@@ -14,7 +14,7 @@ namespace StudentsRegistryPOM.PagesTests
         //declare OneTimeSetUp and OneTimeTearDown in the base class, NUnit automatically executes
         //them for every derived test class without needing any explicit calls in those classes.
         [OneTimeSetUp]
-        public void OneTimeSetup()
+        public void OneTimeSetUp()
         {
             driver = new ChromeDriver();
         }
