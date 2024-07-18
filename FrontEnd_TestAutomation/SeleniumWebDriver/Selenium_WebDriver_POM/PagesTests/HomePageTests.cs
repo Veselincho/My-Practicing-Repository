@@ -12,7 +12,7 @@ namespace StudentsRegistryPOM.PagesTests
             page.OpenPage();
 
             Assert.AreEqual(driver.Title, page.GetPageTitle());
-            Assert.AreEqual("Students Registry", page.GetPageHeadingText());
+            Assert.AreEqual("Students Registry", page.GetPageHeading());
             Assert.True(page.IsPageOpen());
             page.StudentsCount();
         }
