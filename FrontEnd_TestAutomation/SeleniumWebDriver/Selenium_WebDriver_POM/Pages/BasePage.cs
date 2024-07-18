@@ -8,7 +8,7 @@ namespace StudentsRegistryPOM.Pages
         public virtual string PageUrl { get; }
 
         // build a ctor
-        public BasePage(IWebDriver driver)
+        public BasePage(IWebDriver driver)  
         {
             this.driver = driver;
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);  
@@ -37,6 +37,6 @@ namespace StudentsRegistryPOM.Pages
         public string GetPageHeading()
         {
             return PageHeading.Text;
-        }
+        }   
     }
 }
