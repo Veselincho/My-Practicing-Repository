@@ -16,7 +16,8 @@ namespace StudentsRegistryPOM.PagesTests
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {
-            driver = new ChromeDriver();
+            var options = new ChromeOptions();
+            driver = new ChromeDriver(options);
         }
      
         [OneTimeTearDown]

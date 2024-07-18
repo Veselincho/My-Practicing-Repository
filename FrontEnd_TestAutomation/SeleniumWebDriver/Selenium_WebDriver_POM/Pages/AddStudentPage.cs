@@ -21,7 +21,7 @@ namespace StudentsRegistryPOM.Pages
 
         public string GetErrorMessage()
         {
-            return ErrorMessage.Text;
+            return ErrorMessage.Text;   
         }
 
         public void AddStudent(string username, string email)

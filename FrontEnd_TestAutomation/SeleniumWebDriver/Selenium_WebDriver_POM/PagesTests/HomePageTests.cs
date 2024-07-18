@@ -4,6 +4,7 @@ namespace StudentsRegistryPOM.PagesTests
 {
     public class HomePageTests : BaseTests
     {
+        // The Test_HomePage_Content() test will open the Home page and assert that it has a correct title, heading and students count. 
         [Test]
         public void TestHomePageContent()
         {
@@ -11,7 +12,9 @@ namespace StudentsRegistryPOM.PagesTests
             page.OpenPage();
 
             Assert.AreEqual(driver.Title, page.GetPageTitle());
-            
+            Assert.AreEqual("Students Registry", page.GetPageHeadingText());
+            Assert.True(page.IsPageOpen());
+            page.StudentsCount();
         }
     }
 }

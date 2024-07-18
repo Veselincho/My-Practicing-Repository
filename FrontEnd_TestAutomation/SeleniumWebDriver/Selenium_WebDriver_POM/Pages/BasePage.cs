@@ -34,7 +34,7 @@ namespace StudentsRegistryPOM.Pages
             return driver.Title;
         }
 
-        public string GetPageHeading()
+        public string GetPageHeadingText()
         {
             return PageHeading.Text;
         }   
