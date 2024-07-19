@@ -14,7 +14,7 @@ namespace StudentsRegistryPOM.Pages
 
         public ReadOnlyCollection<IWebElement> studentsListItems => driver.FindElements(By.CssSelector("body > ul > li"));
 
-        public string[] GetRegisteredStudent()
+        public string[] GetRegisteredStudents()
         {
             string[] elementStudent = this.studentsListItems.Select(st => st.Text).ToArray();
             return elementStudent;  
