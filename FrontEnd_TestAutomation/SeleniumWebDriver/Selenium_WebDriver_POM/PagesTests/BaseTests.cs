@@ -17,7 +17,7 @@ namespace StudentsRegistryPOM.PagesTests
         public void OneTimeSetUp()
         {
             var options = new ChromeOptions();
-            options.AddArgument("--headless");
+         //   options.AddArgument("--headless");
             driver = new ChromeDriver(options);
         }
      
