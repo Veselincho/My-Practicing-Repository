@@ -13,7 +13,7 @@ namespace StudentsRegistryPOM.Pages
         // override the URL
         public override string PageUrl => "http://softuni-qa-loadbalancer-2137572849.eu-north-1.elb.amazonaws.com:82/add-student";
 
-        public IWebElement ErrorMessage => driver.FindElement(By.LinkText("Cannot add student. Name and email fields are required!"));
+        public IWebElement ErrorMessage => driver.FindElement(By.XPath("//body//div[text() = 'Cannot add student. Name and email fields are required!']"));
         public IWebElement FieldStudentName => driver.FindElement(By.XPath("//form[@method='POST' and @action='/add-student']//div//input[@id='name']"));
         public IWebElement FieldStudentEmail => driver.FindElement(By.XPath("//form[@method='POST' and @action='/add-student']//div//input[@id='email']"));
 
