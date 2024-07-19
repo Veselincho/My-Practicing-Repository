@@ -57,6 +57,24 @@ namespace StudentsRegistryPOM.PagesTests
         }
 
         [Test]
+        public void Test_AddStudentPageAddValidStudentWithMethod()
+        {
+            var addStudentPage = new AddStudentPage(driver);
+            addStudentPage.OpenPage();
+            string studentName = "name" + DateTime.Now.Ticks;
+            string studentEmail = "mail@" + DateTime.Now.Ticks;  
+                
+            addStudentPage.AddStudent(studentName, studentEmail);
+
+            var newStudentInfo = $"{studentName} ({studentEmail})";
+            var viewStudentsPage = new ViewStudentsPage(driver);
+            viewStudentsPage.OpenPage();
+            string[] students = viewStudentsPage.GetRegisteredStudents();
+
+            Assert.That(students.Contains(newStudentInfo));
+        }
+
+        [Test]
         public void Test_AddStudentPageAddInvalidStudent()
         {
             var addStudentPage = new AddStudentPage(driver);
