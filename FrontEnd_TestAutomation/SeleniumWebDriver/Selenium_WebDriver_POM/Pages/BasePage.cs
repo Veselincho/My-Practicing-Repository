@@ -14,7 +14,7 @@ namespace StudentsRegistryPOM.Pages
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);  
         }
 
-        public IWebElement HomeLink => driver.FindElement(By.CssSelector("a[href='/']"));
+        public IWebElement HomeLink => driver.FindElement(By.XPath("//body//a[@href='/']"));
         public IWebElement ViewStudentLink => driver.FindElement(By.CssSelector("a[href='/students']"));
         public IWebElement AddStudentLink => driver.FindElement(By.CssSelector("a[href='/add-student']"));
         public IWebElement PageHeading => driver.FindElement(By.CssSelector("body > h1"));
@@ -34,7 +34,7 @@ namespace StudentsRegistryPOM.Pages
             return driver.Title;
         }
 
-        public string GetPageHeadingText()
+        public string GetPageHeading()
         {
             return PageHeading.Text;
         }   
