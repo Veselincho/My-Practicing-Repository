@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsRegistryPOM", "StudentsRegistryPOM\StudentsRegistryPOM.csproj", "{2F2AF813-88EC-4FB4-AA55-B218E4DFF15D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumTwoNumbersPOM", "SumTwoNumbersPOM\SumTwoNumbersPOM.csproj", "{F302D658-498A-4092-903F-0AD963805757}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2F2AF813-88EC-4FB4-AA55-B218E4DFF15D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F2AF813-88EC-4FB4-AA55-B218E4DFF15D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F2AF813-88EC-4FB4-AA55-B218E4DFF15D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F302D658-498A-4092-903F-0AD963805757}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F302D658-498A-4092-903F-0AD963805757}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F302D658-498A-4092-903F-0AD963805757}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F302D658-498A-4092-903F-0AD963805757}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
