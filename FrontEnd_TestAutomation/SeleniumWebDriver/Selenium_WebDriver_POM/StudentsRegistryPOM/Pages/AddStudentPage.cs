@@ -26,7 +26,7 @@ namespace StudentsRegistryPOM.Pages
 
         public void AddStudent(string username, string email)
         {
-            this.FieldStudentEmail.SendKeys(username);
+            this.FieldStudentName.SendKeys(username);
             this.FieldStudentEmail.SendKeys(email);
             this.AddButton.Click();
         }
