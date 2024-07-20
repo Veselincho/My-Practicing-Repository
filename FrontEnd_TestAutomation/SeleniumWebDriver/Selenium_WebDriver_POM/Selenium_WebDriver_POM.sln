@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentsRegistryPOM", "Stud
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SumTwoNumbersPOM", "SumTwoNumbersPOM\SumTwoNumbersPOM.csproj", "{F302D658-498A-4092-903F-0AD963805757}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SwagLabsAutomationPOM", "SwagLabsAutomationPOM\SwagLabsAutomationPOM.csproj", "{3E8BC3A1-3678-4D7E-8866-85CFEDC76C0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F302D658-498A-4092-903F-0AD963805757}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F302D658-498A-4092-903F-0AD963805757}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F302D658-498A-4092-903F-0AD963805757}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E8BC3A1-3678-4D7E-8866-85CFEDC76C0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E8BC3A1-3678-4D7E-8866-85CFEDC76C0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E8BC3A1-3678-4D7E-8866-85CFEDC76C0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E8BC3A1-3678-4D7E-8866-85CFEDC76C0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
