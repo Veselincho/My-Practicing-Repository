@@ -17,8 +17,6 @@ namespace SwagLabsAutomationPOM.Pages
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10)); //set Explicit wait
         }
 
-        public virtual string pageUrl { get; protected set; } // protected set, so I can change only from child classes
-
         protected IWebElement FindElement(By by)
         {
             //    waits until the element located by `by` is visible and returns it
