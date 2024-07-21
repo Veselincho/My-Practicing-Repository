@@ -17,5 +17,35 @@ namespace SwagLabsAutomationPOM.Tests
             var boolRes = invPage.IsInventoryPageDisplayed();
             Assert.IsTrue(boolRes); 
         }
+
+        [Test]  
+        public void Test_AddToCartByIndex()
+        {
+            // login first
+            Login("standard_user", "secret_sauce");
+            var inventoryPage = new InventoryPage(driver);
+            inventoryPage.AddToCartByIndex(5);
+
+            var cartPage = new CartPage(driver);
+            cartPage.ClickCartLink();
+            Assert.True(cartPage.IsCardItemDisplayed());
+
+            // cartPage.RemoveItemFromCart();  => Not needed as each test starts with a new instance
+            // of InventoryPage, ensuring an independent and empty cart :)
+        }
+
+        [Test]
+        public void Test_AddToCardByName()
+        {
+            // login first
+            Login("standard_user", "secret_sauce");
+            var inventoryPage = new InventoryPage(driver);
+            inventoryPage.AddToCartByName("Sauce Labs Backpack");
+
+            var cartPage = new CartPage(driver);
+            cartPage.ClickCartLink();
+            Assert.True(cartPage.IsCardItemDisplayed());
+
+        }
     }
 }
