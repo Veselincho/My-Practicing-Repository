@@ -9,10 +9,16 @@ namespace SwagLabsAutomationPOM.Tests
 {
     public class InventoryPageTests : BaseTests
     {
+
+        [SetUp] // login beforeEach() test
+        public void SetUp()
+        {
+            Login("standard_user", "secret_sauce");
+        }
+
         [Test]
         public void Test_InventoryDisplay()
         {
-            Login("standard_user", "secret_sauce");
             var invPage = new InventoryPage(driver);
             var boolRes = invPage.IsInventoryPageDisplayed();
             Assert.IsTrue(boolRes);
@@ -21,8 +27,6 @@ namespace SwagLabsAutomationPOM.Tests
         [Test]
         public void Test_AddToCartByIndex()
         {
-            // login first
-            Login("standard_user", "secret_sauce");
             var inventoryPage = new InventoryPage(driver);
             inventoryPage.AddToCartByIndex(5);
 
@@ -37,8 +41,6 @@ namespace SwagLabsAutomationPOM.Tests
         [Test]
         public void Test_AddToCardByName()
         {
-            // login first
-            Login("standard_user", "secret_sauce");
             var inventoryPage = new InventoryPage(driver);
             inventoryPage.AddToCartByName("Sauce Labs Backpack");
 
@@ -50,8 +52,6 @@ namespace SwagLabsAutomationPOM.Tests
         [Test]
         public void Test_PageTitle()
         {
-            // login first
-            Login("standard_user", "secret_sauce");
             var inventoryPage = new InventoryPage(driver);
             Assert.True(inventoryPage.IsInventoryPageLoaded());
         }
