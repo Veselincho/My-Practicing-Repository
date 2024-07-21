@@ -12,6 +12,7 @@ namespace SwagLabsAutomationPOM.Pages
         private readonly By cartItem = By.CssSelector(".cart_item");
         private readonly By checkOutButton = By.CssSelector("#checkout");
         private readonly By cartLink = By.CssSelector("#shopping_cart_container > a");
+        private readonly By removeButton = By.XPath("//div[@class='item_pricebar']//button[@class='btn btn_secondary btn_small cart_button']");
 
         public bool IsCardItemDisplayed()
         {
@@ -27,6 +28,11 @@ namespace SwagLabsAutomationPOM.Pages
         public void ClickCartLink()
         {
             Click(cartLink);
+        }
+
+        public void RemoveItemFromCart()
+        {
+            Click(removeButton);
         }
     }
 }
