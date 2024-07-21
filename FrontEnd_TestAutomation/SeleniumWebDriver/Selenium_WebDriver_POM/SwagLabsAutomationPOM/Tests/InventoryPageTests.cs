@@ -15,10 +15,10 @@ namespace SwagLabsAutomationPOM.Tests
             Login("standard_user", "secret_sauce");
             var invPage = new InventoryPage(driver);
             var boolRes = invPage.IsInventoryPageDisplayed();
-            Assert.IsTrue(boolRes); 
+            Assert.IsTrue(boolRes);
         }
 
-        [Test]  
+        [Test]
         public void Test_AddToCartByIndex()
         {
             // login first
@@ -45,7 +45,15 @@ namespace SwagLabsAutomationPOM.Tests
             var cartPage = new CartPage(driver);
             cartPage.ClickCartLink();
             Assert.True(cartPage.IsCardItemDisplayed());
+        }
 
+        [Test]
+        public void Test_PageTitle()
+        {
+            // login first
+            Login("standard_user", "secret_sauce");
+            var inventoryPage = new InventoryPage(driver);
+            Assert.True(inventoryPage.IsInventoryPageLoaded());
         }
     }
 }
