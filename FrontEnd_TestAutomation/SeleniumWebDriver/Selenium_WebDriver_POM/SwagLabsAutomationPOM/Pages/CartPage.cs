@@ -11,8 +11,9 @@ namespace SwagLabsAutomationPOM.Pages
 
         private readonly By cartItem = By.CssSelector(".cart_item");
         private readonly By checkOutButton = By.CssSelector("#checkout");
+        private readonly By cartLink = By.CssSelector("#shopping_cart_container > a");
 
-        public bool IsCardDisplayed()
+        public bool IsCardItemDisplayed()
         {
             return FindElement(cartItem).Displayed;
             //Checks if an item is displayed in the cart.
@@ -21,6 +22,11 @@ namespace SwagLabsAutomationPOM.Pages
         public void ClickCheckout()
         {
             Click(checkOutButton);  
+        }
+
+        public void ClickCartLink()
+        {
+            Click(cartLink);
         }
     }
 }
