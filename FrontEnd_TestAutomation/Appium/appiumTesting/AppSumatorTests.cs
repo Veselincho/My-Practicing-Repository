@@ -1,7 +1,10 @@
 global using NUnit.Framework;
+
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
 using OpenQA.Selenium.Appium.Service;
+
 namespace appiumTesting
 {
     public class Tests
@@ -20,10 +23,9 @@ namespace appiumTesting
             options.PlatformName = "Android";
             options.AutomationName = "UIAutomator2";
             options.DeviceName = "phone";
-            options.App = @"C:\Users\VesoPC\Desktop\My-Practicing-Repository\
-            FrontEnd_TestAutomation\Appium\apks\com.example.androidappsummator.apk";
+            options.App = @"C:\Users\VesoPC\Desktop\My-Practicing-Repository\FrontEnd_TestAutomation\Appium\apks\com.example.androidappsummator.apk";
 
-            driver = new AndroidDriver(AppiumLocalService.ServiceUrl, options);
+            driver = new AndroidDriver(service, options);
         }
 
         [TearDown]
