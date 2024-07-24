@@ -53,5 +53,60 @@ namespace appiumTesting
             var result = driver.FindElement(MobileBy.Id("com.example.androidappsummator:id/editTextSum"));
             Assert.That(result.Text, Is.EqualTo("4"), "Summation isnt correct!");      
         }
+
+        [Test]
+        public void Test_SumButtonText()
+        {
+            var button = driver.FindElement(MobileBy.XPath("//android.widget.RelativeLayout//android.widget.Button"));
+            Assert.That(button.Text, Is.EqualTo("CALC"));
+        }
+
+        [Test]
+        public void Test_INValidSummation()
+        {
+            var fistInput = driver.FindElement(MobileBy.Id("com.example.androidappsummator:id/editText1"));
+            fistInput.Clear();
+            fistInput.SendKeys(".");
+
+            var secInput = driver.FindElement(MobileBy.Id("com.example.androidappsummator:id/editText2"));
+            secInput.Clear();
+            secInput.SendKeys(".");
+
+            var calcButton = driver.FindElement(MobileBy.ClassName("android.widget.Button"));
+            calcButton.Click();
+
+            var result = driver.FindElement(MobileBy.Id("com.example.androidappsummator:id/editTextSum"));
+            Assert.That(result.Text, Is.EqualTo("error"));
+        }
+
+        [Test]
+        public void SymbolsText()
+        {
+            AppiumElement plus = driver.FindElement(MobileBy.XPath("//android.widget.TextView[@resource-id='com.example.androidappsummator:id/textViewPlus']"));
+            Assert.That(plus.Text, Is.EqualTo("+"));
+
+            AppiumElement equal = driver.FindElement(MobileBy.Id("com.example.androidappsummator:id/textViewEquals"));
+            Assert.That(equal.Text, Is.EqualTo("="));
+        }
+
+        [Test]
+        [TestCase("3", "3", "6")]
+        [TestCase("5", "", "error")]
+        public void Paramentrized_ValidSummation(string input1, string input2, string expectedResult)
+        {
+            var fistInput = driver.FindElement(MobileBy.Id("com.example.androidappsummator:id/editText1"));
+            fistInput.Clear();
+            fistInput.SendKeys(input1);
+
+            var secInput = driver.FindElement(MobileBy.Id("com.example.androidappsummator:id/editText2"));
+            secInput.Clear();
+            secInput.SendKeys(input2);
+
+            var calcButton = driver.FindElement(MobileBy.ClassName("android.widget.Button"));
+            calcButton.Click();
+
+            var result = driver.FindElement(MobileBy.Id("com.example.androidappsummator:id/editTextSum"));
+            Assert.That(result.Text, Is.EqualTo(expectedResult), "Summation isnt correct!");
+        }
     }
 }
