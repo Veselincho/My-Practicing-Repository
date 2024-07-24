@@ -133,6 +133,10 @@ namespace noteAPP
             }
 
             Assert.IsTrue(elementNotFound, "Element was found, but it should have been deleted.");
+
         }
+
+        // [Test]
+        // public void DeleteNoteWithAssertThrows() 
     }
 }
