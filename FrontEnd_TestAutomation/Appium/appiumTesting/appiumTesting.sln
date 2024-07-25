@@ -5,7 +5,9 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sumatorAPP", "sumatorAPP.csproj", "{2EC87993-33D5-4450-A60E-720BB59B75A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "noteAPP", "..\noteAPP\noteAPP.csproj", "{7994CAA2-03EB-4A37-8CC2-D727267EE54A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "noteAPP", "..\noteAPP\noteAPP.csproj", "{7994CAA2-03EB-4A37-8CC2-D727267EE54A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiDemosAPP", "..\ApiDemosAPP\ApiDemosAPP.csproj", "{D97EC290-47CF-4BCA-8A45-75D167280781}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7994CAA2-03EB-4A37-8CC2-D727267EE54A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7994CAA2-03EB-4A37-8CC2-D727267EE54A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7994CAA2-03EB-4A37-8CC2-D727267EE54A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D97EC290-47CF-4BCA-8A45-75D167280781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D97EC290-47CF-4BCA-8A45-75D167280781}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D97EC290-47CF-4BCA-8A45-75D167280781}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D97EC290-47CF-4BCA-8A45-75D167280781}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
