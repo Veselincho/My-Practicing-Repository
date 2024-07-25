@@ -37,7 +37,7 @@ namespace ApiDemosAPP
             _driver.PerformActions(new List<ActionSequence> { swipe });
         }
 
-        private void PerformZoomIn(int ffStartX, int ffStartY, int ffEndX, int ffEndY,      //first finger 
+        private void PerformZoom(int ffStartX, int ffStartY, int ffEndX, int ffEndY,        //first finger 
                                    int sfStartX, int sfStartY, int sfEndX, int sfEndY)      //second finger
             
         {
@@ -224,19 +224,32 @@ namespace ApiDemosAPP
         }
 
         [Test]
-        public void ZoomIn()
+        public void ZoomInAndOut()
         {
             _driver.FindElement(MobileBy.AccessibilityId("Views")).Click();
             ScrollToText("WebView");
             _driver.FindElement(MobileBy.AccessibilityId("WebView")).Click();
             Thread.Sleep(5000);
-            PerformZoomIn(550, 550, 550, 100, 550, 750, 550, 1100);
+            PerformZoom(550, 550, 550, 100, 550, 750, 550, 1100); //ZoomIN
             Thread.Sleep(5000);
             var linkElement = _driver.FindElement(MobileBy.XPath("//android.widget.TextView[@text='i am a link']"));
+            PerformZoom(550, 300, 550, 600, 550, 1400, 550, 1100); //Zoom out
+            Thread.Sleep(2000);
             Assert.NotNull(linkElement);
             Assert.True(linkElement.Displayed, "The link element should be visible.");
             Assert.That(linkElement.Text, Is.EqualTo("i am a link"));
+        }
 
+        [Test]
+        public void TextEvent()
+        {
+            ScrollToText("Text");
+            _driver.FindElement(MobileBy.AccessibilityId("Text")).Click();
+            _driver.FindElement(MobileBy.AccessibilityId("LogTextBox")).Click();
+            _driver.FindElement(MobileBy.AccessibilityId("Add")).Click();
+            var fieldElement = _driver.FindElement(By.Id("io.appium.android.apis:id/text"));
+            Thread.Sleep(3000);
+            Assert.That(fieldElement.Text, Contains.Substring("This is a test"));
         }
     }
 }
