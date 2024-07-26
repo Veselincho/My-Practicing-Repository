@@ -268,17 +268,17 @@ namespace ApiDemosAPP
             changeDateButton.Click();
 
             var okButton = _driver.FindElement(By.Id("android:id/button1"));
+            var dateElement = _driver.FindElement(MobileBy.AndroidUIAutomator("new UiSelector().text(\"10\")"));
+            dateElement.Click();
+            string dateElementContent = dateElement.GetAttribute("content-desc");
 
-            var actions = new Actions(_driver);
-            actions.MoveToLocation(537, 1250);
-            actions.Click();
-            actions.Perform();
             okButton.Click();
 
             changeTimeButton.Click();
             DateTime now = DateTime.Now;
             string timeOnly = now.ToString("HH:mm");
             string hours = timeOnly.Substring(0, 2);
+            
             string mins = timeOnly.Substring(3);
 
             DateTime now2 = DateTime.Now;
@@ -296,7 +296,10 @@ namespace ApiDemosAPP
 
             _driver.FindElement(By.Id("android:id/button1")).Click();
 
-            Assert.That(resultDate.Text, Contains.Substring($"7-10-2024 {timeOnly}"));
+            int calcHours = int.Parse(hours) -3 ;
+            hours = calcHours.ToString();
+
+            Assert.That(resultDate.Text, Is.EqualTo($"{dateElementContent} {hours}:{mins}"));
         }
     }
 }
