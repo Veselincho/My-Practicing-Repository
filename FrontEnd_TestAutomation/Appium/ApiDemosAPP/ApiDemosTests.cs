@@ -301,5 +301,31 @@ namespace ApiDemosAPP
 
             Assert.That(resultDate.Text, Is.EqualTo($"{dateElementContent} {hours}:{mins}"));
         }
+
+        [Test]
+        public void DateWidgetInline()
+        {
+            _driver.FindElement(MobileBy.AccessibilityId("Views")).Click();
+            _driver.FindElement(MobileBy.AccessibilityId("Date Widgets")).Click();
+            _driver.FindElement(MobileBy.AccessibilityId("2. Inline")).Click();
+
+            _driver.FindElement(MobileBy.Id("android:id/toggle_mode")).Click();
+
+            var hoursField = _driver.FindElement(By.Id("android:id/input_hour"));
+            var minsField = _driver.FindElement(By.Id("android:id/input_minute"));
+
+            hoursField.SendKeys("11");
+            minsField.SendKeys("33");
+            _driver.FindElement(By.Id("android:id/toggle_mode")).Click(); //ok
+
+            var hoursResult = _driver.FindElement(MobileBy.Id("android:id/hours"));
+            var minsResult = _driver.FindElement(MobileBy.Id("android:id/minutes"));
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(hoursResult.Text, Is.EqualTo("11"));
+                Assert.That(minsResult.Text, Is.EqualTo("33"));
+            });
+        }
     }
 }
