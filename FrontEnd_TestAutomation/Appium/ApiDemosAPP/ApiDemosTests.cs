@@ -251,5 +251,52 @@ namespace ApiDemosAPP
             Thread.Sleep(3000);
             Assert.That(fieldElement.Text, Contains.Substring("This is a test"));
         }
+
+
+        [Test] // views date widgets
+        public void DateWidgetsDialog()
+        {
+            _driver.FindElement(MobileBy.AccessibilityId("Views")).Click();
+            _driver.FindElement(MobileBy.AccessibilityId("Date Widgets")).Click();
+            _driver.FindElement(MobileBy.AccessibilityId("1. Dialog")).Click();
+
+            var changeDateButton = _driver.FindElement(By.Id("io.appium.android.apis:id/pickDate"));
+            var changeTimeButton = _driver.FindElement(By.Id("io.appium.android.apis:id/pickTime"));
+            var changeTimeButtonSpinner = _driver.FindElement(By.Id("io.appium.android.apis:id/pickTimeSpinner"));
+
+            var resultDate = _driver.FindElement(By.Id("io.appium.android.apis:id/dateDisplay"));
+            changeDateButton.Click();
+
+            var okButton = _driver.FindElement(By.Id("android:id/button1"));
+
+            var actions = new Actions(_driver);
+            actions.MoveToLocation(537, 1250);
+            actions.Click();
+            actions.Perform();
+            okButton.Click();
+
+            changeTimeButton.Click();
+            DateTime now = DateTime.Now;
+            string timeOnly = now.ToString("HH:mm");
+            string hours = timeOnly.Substring(0, 2);
+            string mins = timeOnly.Substring(3);
+
+            DateTime now2 = DateTime.Now;
+            string period = now2.ToString("tt");
+
+            _driver.FindElement(By.Id("android:id/toggle_mode")).Click();
+            _driver.FindElement(By.Id("android:id/input_hour")).SendKeys(hours);
+            _driver.FindElement(By.Id("android:id/input_minute")).SendKeys(mins);
+
+            if (period == "PM")
+            {
+                _driver.FindElement(By.Id("android:id/text1")).Click();
+                _driver.FindElement(MobileBy.XPath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PM']")).Click();
+            }
+
+            _driver.FindElement(By.Id("android:id/button1")).Click();
+
+            Assert.That(resultDate.Text, Contains.Substring($"7-10-2024 {timeOnly}"));
+        }
     }
 }
