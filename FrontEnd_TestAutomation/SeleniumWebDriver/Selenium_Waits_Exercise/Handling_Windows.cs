@@ -27,7 +27,7 @@ namespace Selenium_Waits_Exercise
 
 
         [Test]
-        public void HandleMultipleWindwos()
+        public void HandleMultipleWindows()
         {
             driver.FindElement(By.LinkText("Click Here")).Click();
             ReadOnlyCollection<string> handles = driver.WindowHandles;
@@ -50,5 +50,6 @@ namespace Selenium_Waits_Exercise
                 //Expected exception aas the session is closed
             }
         }
+      
     }
 }
