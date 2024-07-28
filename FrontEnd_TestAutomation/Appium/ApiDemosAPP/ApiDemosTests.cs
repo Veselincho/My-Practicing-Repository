@@ -2,16 +2,11 @@ global using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
-using OpenQA.Selenium.Appium.Interfaces;
-using OpenQA.Selenium.Appium.MultiTouch;
 using OpenQA.Selenium.Appium.Service;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Internal;
-using System.Drawing;
-using System;
-using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
+using System.Drawing;
 
 namespace ApiDemosAPP
 
@@ -405,6 +400,21 @@ namespace ApiDemosAPP
             bool isMyDrawingPretty = true;
 
             Assert.True(isMyDrawingPretty);
+        }
+
+        [Test]
+        public void TextClock()
+        {
+            _driver.FindElement(MobileBy.AccessibilityId("Views")).Click();
+            ScrollToText("TextClock");
+            _driver.FindElement(MobileBy.AccessibilityId("TextClock")).Click();
+            var timeElement = _driver.FindElements(By.XPath("//android.widget.LinearLayout//android.widget.TextView"));
+            var expectedHours = timeElement[3].Text.Substring(0, 2);
+
+            DateTime actualTime = DateTime.Now;
+            string actualHours = actualTime.ToString("hh");
+
+            Assert.AreEqual(expectedHours, actualHours);        
         }
     }
 }
