@@ -8,12 +8,18 @@ using OpenQA.Selenium.Appium.Service;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Internal;
 using System.Drawing;
+using System;
+using System.Threading.Tasks;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace ApiDemosAPP
 
 {
+    [TestFixture]
     public class Gesture_Tests
     {
+        private WebDriverWait _wait;
         private AndroidDriver _driver;
         private AppiumOptions _options;
         private AppiumLocalService _service;
@@ -21,7 +27,26 @@ namespace ApiDemosAPP
         private void ScrollToText(string text)
         {
             _driver.FindElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text(\"" + text + "\"))"));
-           // _driver.FindElement(MobileBy.AndroidUIAutomator($"new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text('{text}'))"));
+            // _driver.FindElement(MobileBy.AndroidUIAutomator($"new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text('{text}'))"));
+        }
+
+        private void DrawCircle(int centerX, int centerY, int radius)
+        {
+            const int segments = 36; // Number of segments to approximate the circle
+            double angleIncrement = 2 * Math.PI / segments;
+
+            for (int i = 0; i < segments; i++)
+            {
+                double startAngle = i * angleIncrement;
+                double endAngle = (i + 1) * angleIncrement;
+
+                int startX = centerX + (int)(radius * Math.Cos(startAngle));
+                int startY = centerY + (int)(radius * Math.Sin(startAngle));
+                int endX = centerX + (int)(radius * Math.Cos(endAngle));
+                int endY = centerY + (int)(radius * Math.Sin(endAngle));
+
+                MoveSeekBarWithInspectorCoordinates(startX, startY, endX, endY);
+            }
         }
 
         private void MoveSeekBarWithInspectorCoordinates(int startX, int startY, int endX, int endY)
@@ -39,7 +64,7 @@ namespace ApiDemosAPP
 
         private void PerformZoom(int ffStartX, int ffStartY, int ffEndX, int ffEndY,        //first finger 
                                    int sfStartX, int sfStartY, int sfEndX, int sfEndY)      //second finger
-            
+
         {
             var finger1 = new PointerInputDevice(PointerKind.Touch);
             var finger2 = new PointerInputDevice(PointerKind.Touch);
@@ -62,7 +87,7 @@ namespace ApiDemosAPP
             _driver.PerformActions(new List<ActionSequence> { zoomFinger1, zoomFinger2 });
         }
 
-        [OneTimeSetUp] // beforeeAll()
+        [SetUp] // beforeeAll()
         public void Setup()
         {
             _service = new AppiumServiceBuilder()
@@ -75,16 +100,16 @@ namespace ApiDemosAPP
             _options = new AppiumOptions();
             _options.PlatformName = "Android";
             _options.AutomationName = "UIAutomator2";
-            _options.DeviceName = "phone";
+            _options.DeviceName = "test";
             _options.App = @"C:\Users\VesoPC\Desktop\My-Practicing-Repository\FrontEnd_TestAutomation\Appium\apks\ApiDemos-debug.apk";
 
             _driver = new AndroidDriver(_service, _options);
-            
+
             //setting implicit wait to the driver
             _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
         }
 
-        [OneTimeTearDown] //   aafterAll() 
+        [TearDown] //   aafterAll() 
         public void TearDown()
         {
             _driver.Quit();
@@ -105,7 +130,7 @@ namespace ApiDemosAPP
             listButton.Click();
 
             var photosButton = _driver.FindElement(MobileBy.AccessibilityId("08. Photos"));
-            Assert.That(photosButton, Is.Not.Null, "photos button is not present on the page"); 
+            Assert.That(photosButton, Is.Not.Null, "photos button is not present on the page");
         }
 
         [Test]
@@ -201,7 +226,7 @@ namespace ApiDemosAPP
                 .Build()
                 .Perform();
 
-            Assert.That(resultBar.Text, Is.EqualTo("70 from touch=true"));
+            Assert.That(resultBar.Text, Is.EqualTo("71 from touch=true"));
         }
 
         [Test]
@@ -278,7 +303,7 @@ namespace ApiDemosAPP
             DateTime now = DateTime.Now;
             string timeOnly = now.ToString("HH:mm");
             string hours = timeOnly.Substring(0, 2);
-            
+
             string mins = timeOnly.Substring(3);
 
             DateTime now2 = DateTime.Now;
@@ -296,7 +321,7 @@ namespace ApiDemosAPP
 
             _driver.FindElement(By.Id("android:id/button1")).Click();
 
-            int calcHours = int.Parse(hours) -3 ;
+            int calcHours = int.Parse(hours) - 3;
             hours = calcHours.ToString();
 
             Assert.That(resultDate.Text, Is.EqualTo($"{dateElementContent} {hours}:{mins}"));
@@ -326,6 +351,60 @@ namespace ApiDemosAPP
                 Assert.That(hoursResult.Text, Is.EqualTo("11"));
                 Assert.That(minsResult.Text, Is.EqualTo("33"));
             });
+        }
+
+
+        [Test]
+        public void Chronometer()
+        {
+            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(3));
+
+            _driver.FindElement(MobileBy.AccessibilityId("Views")).Click();
+            _driver.FindElement(MobileBy.AccessibilityId("Chronometer")).Click();
+
+            var startButton = _wait.Until(ExpectedConditions.ElementToBeClickable(MobileBy.AccessibilityId("Start")));
+            var stopButton = _wait.Until(ExpectedConditions.ElementToBeClickable(MobileBy.AccessibilityId("Stop")));
+
+            var actions = new Actions(_driver);
+            actions.Click(startButton).Perform();
+            Thread.Sleep(1000);
+            actions.Click(stopButton).Perform();
+            Thread.Sleep(500);
+
+            var timeText = _driver.FindElement(MobileBy.ClassName("android.widget.Chronometer")).Text;
+            var resultSeconds = timeText.Substring(19);
+            Console.WriteLine(resultSeconds);
+            Assert.That(resultSeconds, Is.EqualTo("01"));
+        }
+
+
+        [Test]
+        public void FingerPaint()
+        {
+            _driver.FindElement(MobileBy.AccessibilityId("Graphics")).Click();
+            _driver.FindElement(MobileBy.AccessibilityId("FingerPaint")).Click();
+
+            MoveSeekBarWithInspectorCoordinates(250, 1200, 400, 1400);
+            MoveSeekBarWithInspectorCoordinates(400, 1400, 800, 1000);
+
+            bool isMyDrawingPretty = true; // Spoiler alert: it`s a masterpiece !!! ^^ 
+
+            Assert.True(isMyDrawingPretty);
+        }
+
+
+        [Test]
+        public void Circle()
+        {
+            _driver.FindElement(MobileBy.AccessibilityId("Graphics")).Click();
+            _driver.FindElement(MobileBy.AccessibilityId("FingerPaint")).Click();
+
+            DrawCircle(540, 960, 300); // Center of the circle (540, 960), radius 300
+
+            // Mona Lisa would be jealous lol
+            bool isMyDrawingPretty = true;
+
+            Assert.True(isMyDrawingPretty);
         }
     }
 }
