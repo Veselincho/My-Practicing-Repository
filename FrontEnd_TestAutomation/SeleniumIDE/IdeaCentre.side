@@ -1,0 +1,169 @@
+{
+  "id": "97556757-881e-4331-a8c3-92bb0378e9e3",
+  "version": "2.0",
+  "name": "IdeaCentre",
+  "url": "http://softuni-qa-loadbalancer-2137572849.eu-north-1.elb.amazonaws.com:83/",
+  "tests": [{
+    "id": "ecc3dedd-ca4a-4670-b597-d92e45fb4950",
+    "name": "01.HomePageNavigationTest",
+    "commands": [{
+      "id": "4a3f5d81-fec5-4793-81c8-ef0872e3a301",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e578fb9a-3995-449b-aedd-c7a1fefe49eb",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1400x800",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9aeeed3c-baeb-415d-a295-6fa87702c8aa",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Home Page - IdeaCenter.WebApp",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "71b01679-933e-42fd-b1a0-db70446c5155",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "css=div > a[href='/Users/Register']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f150694a-93db-43fc-90ec-d81a09fc520b",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "xpath=(//div//a)[3]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "17ffea85-469a-4a2b-a18a-37261920ddc3",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "73aca84a-7305-4806-b147-d8dd56a42edf",
+    "name": "02.LoginTest",
+    "commands": [{
+      "id": "78e5f674-ecdb-442d-adf6-b02c83e37d72",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5a17fb82-3aeb-475c-adfd-a894654d0a93",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1400x800",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "abc90c7c-defc-4b17-9f1b-84f09570e154",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div//div//a[@class='btn btn-outline-info px-3 me-2']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1a26e1ab-c613-46f1-a9e4-2b13504b3e0c",
+      "comment": "",
+      "command": "click",
+      "target": "id=typeEmailX-2",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4961e556-99f4-4895-ad61-8a922777b2ad",
+      "comment": "",
+      "command": "type",
+      "target": "id=typeEmailX-2",
+      "targets": [],
+      "value": "email@yahoo.com"
+    }, {
+      "id": "d7673008-1e0c-4a9f-80b4-7cccf0ac491b",
+      "comment": "",
+      "command": "click",
+      "target": "id=typePasswordX-2",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "76042eee-dbd1-44e8-8e89-8ccb8e1540ef",
+      "comment": "",
+      "command": "type",
+      "target": "id=typePasswordX-2",
+      "targets": [],
+      "value": "password1"
+    }, {
+      "id": "9fb9b698-20da-4fad-9a5e-3cf76184c6af",
+      "comment": "",
+      "command": "click",
+      "target": "css=body > section > div > div > div > div > form > button:nth-child(5)",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f0d04d49-7b39-485b-86b4-a6265a2383b0",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "xpath=//div//ul//li//a[@class='nav-link' and @href='/Profile']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "91fd7251-1346-46a3-bf4b-3822c3a46e91",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "//div//ul//li//a[@class='nav-link' and @href='/Ideas/MyIdeas']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "028b9976-5527-4d52-beae-f90d0d174e58",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "//div//ul//li//a[@class='nav-link' and @href='/Ideas/Create']",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a6915fc6-b19e-440b-9e36-3b5e5da8f7d5",
+      "comment": "",
+      "command": "click",
+      "target": "xpath=//div[@class='d-flex align-items-center']//a",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a51d981-ff59-41c6-9b32-ee20462a371b",
+      "comment": "",
+      "command": "verifyElementPresent",
+      "target": "css=#navbarButtonsExample > div > a.btn.btn-primary.me-3",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "cf18b74e-d911-4951-b51d-9789af98c758",
+    "name": "03.EditProfile",
+    "commands": [{
+      "id": "4a638a1f-d222-4262-99c1-26ca274137e2",
+      "comment": "",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "ecb75020-17f9-4e0e-83a1-a5c9216e6497",
+    "name": "HomePage",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["ecc3dedd-ca4a-4670-b597-d92e45fb4950", "73aca84a-7305-4806-b147-d8dd56a42edf", "cf18b74e-d911-4951-b51d-9789af98c758"]
+  }],
+  "urls": ["http://softuni-qa-loadbalancer-2137572849.eu-north-1.elb.amazonaws.com:83/"],
+  "plugins": []
+}
