@@ -68,5 +68,78 @@ namespace Travelers_Tests
 
         }
 
+        //[Test, Order(2)]
+        //public void Test_GetDestinationByName()
+        //{
+
+        //    // Unfin
+
+        //    var destinationName = "Maui Beach";
+        //    var getRequest = new RestRequest("/destination/{dName}")
+        //        .AddUrlSegment("dName", destinationName) ;  
+
+        //    // Todo... 
+        //}
+
+
+        [Test, Order(3)]
+        public void Test_CreateDestination()
+        {
+            var randomTitle = $"title_{randomNum}";
+            var postRequest = new RestRequest("/destination", Method.Post)
+                .AddHeader("Authorization", $"Bearer {token}")
+                .AddJsonBody(new
+                {
+                    name = randomTitle,
+                    location = "testLocation",
+                    description = "testDesc",
+                    attractions = new string[]
+                    {
+                        "I have",
+                        "no idea"
+                    },
+                    category = "67545926c4286316e439e407",
+                    bestTimeToVisit = "after salary lol"
+                });
+
+            var postResponse = client.Execute(postRequest);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(postResponse.IsSuccessful, Is.True, $"Request failed with content: {postResponse.Content}");
+                Assert.That(postResponse.Content, Is.Not.Null.Or.Empty, "Content shoudnt be null or empty");
+                Assert.That(JObject.Parse(postResponse.Content).Type, Is.EqualTo(JTokenType.Object), "response content isn`t object");
+            });
+
+            var responseData = JObject.Parse(postResponse.Content);
+
+            string destinationID;
+            Assert.Multiple(() =>
+            {
+                Assert.That(responseData.ContainsKey("_id"), Is.True);
+                destinationID = responseData["_id"].ToString();
+            });
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(responseData["name"].ToString(), Is.EqualTo(randomTitle));
+                Assert.That(responseData["location"].ToString(), Is.EqualTo("testLocation"));
+                Assert.That(responseData["description"].ToString(), Is.EqualTo("testDesc"));
+                Assert.That(responseData["attractions"].ToObject<string[]>(), Is.EqualTo(new string[] { "I have", "no idea" }));  // 
+                Assert.That(responseData["bestTimeToVisit"].ToString(), Is.EqualTo("after salary lol"));
+                Assert.That(responseData["category"].ToString(), Is.Not.Null.Or.Empty);
+                Assert.That(responseData["category"].Type, Is.EqualTo(JTokenType.Object), "category must be an object in the response"); // assure it returns as object this time
+            });
+
+
+        }
+
+
+        [Test, Order(4)]
+        public void Test_UpdateDestination()
+        {
+            //inc
+
+        }
     }
 }
