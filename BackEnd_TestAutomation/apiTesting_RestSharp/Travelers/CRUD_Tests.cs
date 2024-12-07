@@ -31,7 +31,7 @@ namespace Travelers_Tests
         public void Test_GetAllDestinations()
         {
             var getRequest = new RestRequest("/destination", Method.Get);
-            var getResponse = client.Get(getRequest);
+            var getResponse = client.Execute(getRequest);
 
             var destinations = JArray.Parse(getResponse.Content);
 
