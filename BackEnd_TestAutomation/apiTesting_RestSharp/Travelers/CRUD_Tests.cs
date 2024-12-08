@@ -10,6 +10,8 @@ namespace Travelers_Tests
         private RestClient client;
         private string token;
         private int randomNum;
+        private string lastRandom;
+        private string category;
 
         [SetUp]
         public void SetUp()
@@ -66,21 +68,25 @@ namespace Travelers_Tests
                 Assert.That(listOfDestinations.Contains("Yellowstone National Park"));
             }
 
+            category = destinations[0]["category"]["_id"]?.ToString();
         }
 
-        //[Test, Order(2)]
-        //public void Test_GetDestinationByName()
-        //{
+        [Test, Order(2)]
+        public void Test_GetDestinationByName()
+        {
+            var getRequest = new RestRequest("/destination", Method.Get);
+            var getResponse = client.Execute(getRequest);
 
-        //    // Unfin
+            Assert.That(getResponse.IsSuccessStatusCode, Is.True);
+            Assert.That(getResponse.Content, Is.Not.Null.Or.Empty);
 
-        //    var destinationName = "Maui Beach";
-        //    var getRequest = new RestRequest("/destination/{dName}")
-        //        .AddUrlSegment("dName", destinationName) ;  
+            var destinations = JArray.Parse(getResponse.Content);
+            Console.WriteLine(destinations);
+            var destination = destinations.FirstOrDefault(d => d["name"].ToString() == "Rocky Mountains");
+            var descr = destination["description"].ToString();
 
-        //    // Todo... 
-        //}
-
+            Assert.AreEqual(descr, "A vast mountain range with stunning scenery and hiking trails.");
+        }
 
         [Test, Order(3)]
         public void Test_CreateDestination()
@@ -98,7 +104,7 @@ namespace Travelers_Tests
                         "I have",
                         "no idea"
                     },
-                    category = "67545926c4286316e439e407",
+                    category = category,
                     bestTimeToVisit = "after salary lol"
                 });
 
@@ -131,15 +137,88 @@ namespace Travelers_Tests
                 Assert.That(responseData["category"].Type, Is.EqualTo(JTokenType.Object), "category must be an object in the response"); // assure it returns as object this time
             });
 
-
+            lastRandom = randomTitle;
         }
-
 
         [Test, Order(4)]
         public void Test_UpdateDestination()
         {
-            //inc
+            var getRequest = new RestRequest("/destination", Method.Get);
+            var getResponse = client.Execute(getRequest);
+            var destinations = JArray.Parse(getResponse.Content);
 
+            Assert.True(getResponse.IsSuccessful);
+
+            var destinationToUpdate = destinations.FirstOrDefault(d => d["name"].ToString() == lastRandom);
+            Assert.That(destinationToUpdate, Is.Not.Null);
+
+            var destId = destinationToUpdate["_id"].ToString();
+
+            var randomName = $"updated_{randomNum}";
+
+            var putRequest = new RestRequest("/destination/{id}", Method.Put)
+                .AddUrlSegment("id", destId)
+                .AddHeader("Authorization", $"Bearer {token}")
+                .AddJsonBody(new
+                {
+                    name = randomName,
+                    location = "testLocation",
+                    description = "testDesc",
+                    attractions = new string[]
+                    {
+                        "I have",
+                        "no idea"
+                    },
+                    category = category,
+                    bestTimeToVisit = "after salary for sure"
+                });
+
+            var putResponse = client.Execute(putRequest);
+            Assert.True(putResponse.IsSuccessful);
+
+            var responseContent = JObject.Parse(putResponse.Content);
+            Assert.That(responseContent, Is.Not.Null);
+
+            Assert.That(responseContent["name"].ToString(), Is.EqualTo(randomName));  
+            Assert.That(responseContent["bestTimeToVisit"].ToString(), Is.EqualTo("after salary for sure"));
+
+            // Trying to search for the old name anywhere
+            // firstly get all elements again
+            
+            getResponse = client.Execute(getRequest);
+            var updatedDestinations = JArray.Parse(getResponse.Content);
+
+            var result = updatedDestinations.FirstOrDefault(dest => dest["name"]?.ToString() == lastRandom);
+            // assert that the element is NOT found
+            Assert.Null(result);
+
+        }
+
+        [Test, Order(5)]
+        public void Test_DeleteDestination()
+        {
+            var getRequest = new RestRequest("/destination", Method.Get);
+            var getResponse = client.Execute(getRequest);
+            var destinations = JArray.Parse(getResponse.Content);
+            var lastDest = destinations[0];
+
+            var lastDestID = lastDest["_id"].ToString();
+
+            var delRequest = new RestRequest("/destination/{id}", Method.Delete)
+                .AddHeader("Authorization", $"Bearer {token}")
+                .AddUrlSegment("id", lastDestID);
+
+            var delResponse = client.Execute(delRequest);
+            Assert.True(delResponse.IsSuccessful);
+
+
+            // try to reach the destination now
+            var verifyGetRequest = new RestRequest("/destination/{id}", Method.Get)
+                .AddUrlSegment("id", lastDestID);
+            var verifyResponse = client.Execute(verifyGetRequest);
+
+            Assert.True(verifyResponse.IsSuccessful);
+            Assert.That(verifyResponse.Content, Is.Null.Or.EqualTo("null"));
         }
     }
 }
