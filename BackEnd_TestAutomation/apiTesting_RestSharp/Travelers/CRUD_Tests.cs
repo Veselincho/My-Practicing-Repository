@@ -2,7 +2,7 @@
 using RestSharp;
 using Travelers;
 
-namespace Travelers_Tests
+namespace Travelers_CRUD
 {
     [TestFixture]
     public class CRUD_Tests
