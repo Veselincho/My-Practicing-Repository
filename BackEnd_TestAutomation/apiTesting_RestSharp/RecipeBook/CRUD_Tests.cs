@@ -12,6 +12,7 @@ namespace RecipeBook_CRUD
         private int randomNum;
         private string firstCategory;
         private string myRecipeID;
+        private string myTitle;
 
         [SetUp]
         public void SetUp()
@@ -200,12 +201,36 @@ namespace RecipeBook_CRUD
 
             });
 
+            myTitle = myUpdatedTitle;
         }
 
         [Test, Order(5)]
         public void Test_DeleteRecipe()
         {
-            // inc
+            var deleteReq = new RestRequest("/recipe/{id}", Method.Delete)
+                .AddUrlSegment("id", myRecipeID)
+                .AddHeader("Authorization", $"Bearer {token}");
+
+            var deleteResp = client.Execute(deleteReq);
+            Assert.True(deleteResp.IsSuccessful);
+
+            var jsonResponse = JObject.Parse(deleteResp.Content);
+            Assert.That(jsonResponse["title"].ToString(), Is.EqualTo(myTitle));
+        }
+
+        [Test, Order(6)]
+        public void Test_VerifyRecipeDeletion()
+        {
+            var getReq = new RestRequest("/recipe/{id}", Method.Get)
+                .AddUrlSegment("id", myRecipeID);
+
+            var getResponse = client.Execute(getReq);
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(getResponse.IsSuccessful, Is.True, $"response is not successful and failed with content: {getResponse.Content}");
+                Assert.That(getResponse.Content, Is.EqualTo("null"), "The response content should be 'null'");
+            });
         }
     }
 }
